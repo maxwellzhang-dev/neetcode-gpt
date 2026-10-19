@@ -1,4 +1,10 @@
 class Solution:
     def get_minimizer(self, iterations: int, learning_rate: float, init: int) -> float:
-        return init if not iterations else round(init * ((1 - 2 * learning_rate) ** iterations), 5)
+        minimizer = init
+
+        for _ in range(iterations):
+            derivative = 2 * minimizer
+            minimizer = minimizer - learning_rate * derivative
+
+        return round(minimizer, 5)
 
